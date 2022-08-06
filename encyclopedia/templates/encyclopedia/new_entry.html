@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Entry
+{% endblock %}
+
+{% block body %}
+
+<form action="{% url 'new_entry' %}" method="post">
+    {% csrf_token %}
+    <div class="box_form">
+        {{ form.form_title.label }}
+        <br>
+        {{ form.form_title }}
+    </div>
+    {% if error %}
+        <ul>
+            <li>{{ error }}</li>
+        </ul>
+    {% endif %}    
+    <div class="box_form">    
+        {{ form.form_content.label }}
+        {{ form.form_content }}
+    </div>
+    <input class="submit_right" type="submit" value="Save"> 
+</form>
+
+{% endblock %}
